@@ -1,34 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+    android:layout_height="fill_parent"
+    android:layout_margin="5dp"
+    android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/textView2"
+    <ImageView
+        android:id="@+id/imageView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:text="TextView" />
+        android:contentDescription="@string/main_logo_description"
+        android:src="@drawable/soundboard_logo" 
+        android:layout_gravity="center_horizontal"/>
+
+    <View
+        android:layout_width="0px"
+        android:layout_height="0px"
+        android:layout_weight=".25" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/main_phone_number_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/phone_number"
+            android:textSize="18sp" 
+            android:layout_marginRight="5dp"/>
+
+        <EditText
+            android:id="@+id/main_phone_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="phone" >
+
+            <requestFocus />
+        </EditText>
+    </LinearLayout>
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/main_btn_call"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textView2"
-        android:layout_marginTop="54dp"
-        android:text="Button" />
+        android:text="@string/main_call" 
+        android:onClick="call"/>
 
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:ems="10"
-        android:inputType="phone" >
+    <View
+        android:layout_width="0px"
+        android:layout_height="0px"
+        android:layout_weight=".75" />
 
-        <requestFocus />
-    </EditText>
-
-</RelativeLayout>
+</LinearLayout>

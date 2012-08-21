@@ -3,5 +3,8 @@
 
     <string name="hello">Hello World, Splashscreen!</string>
     <string name="app_name">soundboard</string>
+    <string name="phone_number">Phone Number: </string>
+    <string name="main_call">Call!</string>
+    <string name="main_logo_description">Logo</string>
 
 </resources>
