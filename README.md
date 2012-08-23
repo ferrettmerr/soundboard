@@ -4,14 +4,16 @@ Soundboard demo for TelTech.
 Make sure to have wireless on when testing the application so the phone has access to a data network.
 4g and call works, 3g and call does not. This was the case with Verizon. I think AT&T can do 3g data and call.
 
-The architecture of the application should have three major components
-* Call Server
+## Architecture
+The following sections describe the overall architecture of the soundboard application
+
+### Call Server
 
 The call servers purpose is to transfer the call status to the mobile app via push notifications. This allows 
 for a much nicer application with loading screens, ability to prevent user errors before they occur and 
 access to features of the API's POST/GET callbacks.
 
-* Android API wrapper around the TelAPI services. 
+### Android API Wrapper Around the TelAPI Services 
 
 The API should mirror the python/ruby API's that currently exist.
 The api should also provide a handler subclass to deal with callbacks from the Call Server. or errors
@@ -22,17 +24,17 @@ examples:
 	API not responding
 	Call Server not responding
 
-* Android App
+### Android App
 
 Uses the Android API to connect to the TelAPI services and receives updates from the call server.
 
-Comments:
-LoginActivity:
+### Comments
+#### LoginActivity
 The login should check to make sure the user has the capability to maintain a call and data connection at 
 the same time. If the device cannot accomplish this, the application should warn the user and instruct them
 on how to fix it.
 
-SoundboardActivity
+#### SoundboardActivity
 This activity comprises 90% of the application. Having MainActivity pass the form data
 to the SoundboardActivity allows for a more decoupled application. This allows multiple entry points into
 the SoundboardActivity easier then passing in a previously existing call and handler.
@@ -43,7 +45,7 @@ and using handlers to update UI was used to make the API calls.
 The data should be loaded through a HTTP call which means the data should come back using a handler. This 
 was ommited since the data is hardcoded and a handler is used elsewhere in the application
 
-Dream application:
+### Dream Application
 The following are a list of features that I would love to implement in an application like this:
 
 Landscape phones and tablets should show like the Novation Launchpad where each button is an image of the 
