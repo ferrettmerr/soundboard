@@ -37,7 +37,7 @@ the same time. If the device cannot accomplish this, the application should warn
 on how to fix it.
 
 ### SoundboardActivity
-This activity comprises most of the application. Having MainActivity pass the form data to the 
+This activity comprises most of the application. Having CallFromActivity pass the form data to the 
 SoundboardActivity allows for a better decoupling of activities. This makes multiple entry points into
 the SoundboardActivity easier then passing in a previously existing call and handler implementation.
 
