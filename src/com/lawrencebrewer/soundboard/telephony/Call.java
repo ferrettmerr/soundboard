@@ -1,6 +1,7 @@
 package com.lawrencebrewer.soundboard.telephony;
 
 import java.io.IOException;
+import java.lang.ref.SoftReference;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,17 +37,19 @@ import com.lawrencebrewer.soundboard.activities.R;
 public class Call {
 	String fromNumber;
 	String toNumber;
-	Handler handler;
+	SoftReference<Handler> softHandler;
 	String authSID;
 	String authToken;
 	String callSID;
+	String baseURL;
 	
 	public Call(String toNumber, String fromNumber, Handler handler, Context context) {
 		this.fromNumber = fromNumber;
 		this.toNumber = toNumber;
-		this.handler = handler;
-		authSID = context.getString(R.string.authSID);
-		authToken = context.getString(R.string.tokenSID);
+		this.softHandler = new SoftReference<Handler>(handler);
+		this.authSID = context.getString(R.string.authSID);
+		this.authToken = context.getString(R.string.tokenSID);
+		this.baseURL = context.getString(R.string.baseURL);
 	}
 
 	public void startCall(){
@@ -55,7 +58,7 @@ public class Call {
 			public void run() {
 				try {
 					DefaultHttpClient httpclient = new DefaultHttpClient();
-					HttpPost httppost = new HttpPost("https://api.telapi.com/2011-07-01/" + "Accounts/" + authSID +"/Calls.json");
+					HttpPost httppost = new HttpPost(baseURL + "Accounts/" + authSID +"/Calls.json");
 
 					UsernamePasswordCredentials creds = new UsernamePasswordCredentials(authSID, authToken);
 					httppost.addHeader(new BasicScheme().authenticate(creds, httppost));
@@ -78,7 +81,11 @@ public class Call {
 					
 					Message message = new Message();
 					message.obj = "Call id: " + Call.this.callSID;
-					handler.sendMessage(message);
+					
+					Handler handler = Call.this.softHandler.get();
+					if (handler != null){
+						handler.sendMessage(message);						
+					}
 				
 				} catch (ClientProtocolException e) {
 					e.printStackTrace();
@@ -103,7 +110,7 @@ public class Call {
 			public void run() {
 				try {
 					DefaultHttpClient httpclient = new DefaultHttpClient();
-					HttpPost httppost = new HttpPost("https://api.telapi.com/2011-07-01/" + "Accounts/" + authSID +"/Calls/" + callSID);
+					HttpPost httppost = new HttpPost(baseURL + "Accounts/" + authSID +"/Calls/" + callSID);
 
 					UsernamePasswordCredentials creds = new UsernamePasswordCredentials(authSID, authToken);
 					httppost.addHeader(new BasicScheme().authenticate(creds, httppost));
@@ -131,7 +138,7 @@ public class Call {
 			public void run() {
 				try {
 					DefaultHttpClient httpclient = new DefaultHttpClient();
-					HttpPost httppost = new HttpPost("https://api.telapi.com/2011-07-01/"+"Accounts/" + authSID +"/Calls/" + callSID + "/Play");
+					HttpPost httppost = new HttpPost(baseURL+"Accounts/" + authSID +"/Calls/" + callSID + "/Play");
 
 					UsernamePasswordCredentials creds = new UsernamePasswordCredentials(authSID, authToken);
 					httppost.addHeader(new BasicScheme().authenticate(creds, httppost));

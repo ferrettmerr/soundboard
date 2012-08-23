@@ -21,15 +21,15 @@ import android.widget.Toast;
 import com.lawrencebrewer.soundboard.datamodel.Sound;
 import com.lawrencebrewer.soundboard.telephony.Call;
 
+/**
+ * Activity that contains a list of sounds to play during a call. Has the capability to end the call.
+ * This activity responds to messages posted to the handler given to the API.
+ * 
+ * @author Larry Brewer
+ *
+ */
 public class SoundboardActivity extends Activity{
 	Call call;
-	
-	Handler handler = new Handler(){
-		public void handleMessage(android.os.Message msg) {
-			Toast.makeText(SoundboardActivity.this, msg.obj.toString(), Toast.LENGTH_LONG).show();
-		}
-	};
-	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -64,9 +64,17 @@ public class SoundboardActivity extends Activity{
 		
 		String toNumber = getIntent().getStringExtra("toNumber");
 		
+		Handler handler = new APIHandler(this);
+		
 		call = new Call(toNumber,phoneNumber, handler, this);
 	}
 
+	
+	/**
+	 * List adapter that displays sounds with a picture, title, and url to the sound.
+	 * @author Larry Brewer
+	 *
+	 */
 	public class SoundboardListAdapter extends ArrayAdapter<Sound>{
 		
 		public SoundboardListAdapter(Context context, int textViewResourceId,
@@ -99,9 +107,23 @@ public class SoundboardActivity extends Activity{
 			return view;
 		}
 		
-		
 	}
 	
+	/**
+	 * Handles the responses from the API.
+	 * @author Larry
+	 *
+	 */
+	private static class APIHandler extends Handler{
+		SoundboardActivity activity;
+		
+		public APIHandler(SoundboardActivity activity) {
+			this.activity = activity;
+		}
+		public void handleMessage(android.os.Message msg) {
+			Toast.makeText(activity, msg.obj.toString(), Toast.LENGTH_LONG).show();
+		}
+	}
 	
 	public void endCall(View view){
 		call.endCall();

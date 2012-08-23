@@ -6,12 +6,19 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/**
+ * Representation of a sound that can be played by the application. 
+ * This is more of a stub than anything close to an implementation.
+ * 
+ * @author Larry Brewer
+ *
+ */
 public class Sound {
 	public String title;
 	public String url;
 
 	public static ArrayList<Sound> getSounds(){
-		String files = "[{\"title\":\"doh!\",\"url\":\"http://lawrencebrewer.com/HomersDoh.wav!\"},{\"title\":\"Whoopdy Freaking do!\",\"url\":\"http://fozzy42.com/SoundClips/TV/wfreakndo1.wav\"}]";
+		String files = "[{\"title\":\"doh!\",\"url\":\"http://lawrencebrewer.com/HomersDoh.wav\",\"img\":\"http://lawrencebrewer.com/doh.jpg\"},{\"title\":\"Kick\",\"url\":\"http://lawrencebrewer.com/kick.wav\",\"img\":\"http://lawrencebrewer.com/drum.gif\"}]";
 
 		try {
 			JSONArray musicArray = new JSONArray(files);

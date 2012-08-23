@@ -27,7 +27,7 @@ public class Splashscreen extends Activity {
 					e.printStackTrace();
 				}
 				
-				startActivity(new Intent(Splashscreen.this, MainActivity.class));
+				startActivity(new Intent(Splashscreen.this, CallFormActivity.class));
 				finish();
 			}
 		}).start();
