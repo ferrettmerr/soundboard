@@ -4,7 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.lawrencebrewer.soundboard.R;
+import com.lawrencebrewer.soundboard.activities.MainActivity;
+import com.lawrencebrewer.soundboard.activities.R;
 
 /**
  * Presents the splash screen for 3 seconds and loads the MainActivity.
