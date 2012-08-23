@@ -6,5 +6,9 @@
     <string name="phone_number">Phone Number: </string>
     <string name="main_call">Call!</string>
     <string name="main_logo_description">Logo</string>
+    <string name="authSID">ACa88d8386a17d4f949f12325dd6c51d95</string>
+    <string name="tokenSID">2ce4961cf0024054b09b7ea17395564d</string>
+    <string name="baseURL">https://api.telapi.com</string>
+    <string name="soundboard_end_call">End Call</string>
 
 </resources>
