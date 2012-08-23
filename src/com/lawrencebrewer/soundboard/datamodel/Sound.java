@@ -18,7 +18,7 @@ public class Sound {
 	public String url;
 
 	public static ArrayList<Sound> getSounds(){
-		String files = "[{\"title\":\"doh!\",\"url\":\"http://lawrencebrewer.com/HomersDoh.wav\",\"img\":\"http://lawrencebrewer.com/doh.jpg\"},{\"title\":\"Kick\",\"url\":\"http://lawrencebrewer.com/kick.wav\",\"img\":\"http://lawrencebrewer.com/drum.gif\"}]";
+		String files = "[{\"title\":\"doh!\",\"url\":\"http://lawrencebrewer.com/HomersDoh.mp3\",\"img\":\"http://lawrencebrewer.com/doh.jpg\"},{\"title\":\"Kick\",\"url\":\"http://lawrencebrewer.com/kick.mp3\",\"img\":\"http://lawrencebrewer.com/drum.gif\"}]";
 
 		try {
 			JSONArray musicArray = new JSONArray(files);

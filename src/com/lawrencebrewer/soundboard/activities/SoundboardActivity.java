@@ -127,6 +127,7 @@ public class SoundboardActivity extends Activity{
 	
 	public void endCall(View view){
 		call.endCall();
+		finish();
 	}
 	
 	private class ViewHolder{

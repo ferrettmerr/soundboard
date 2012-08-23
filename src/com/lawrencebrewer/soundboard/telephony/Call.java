@@ -145,6 +145,8 @@ public class Call {
 
 					List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
 					nameValuePairs.add(new BasicNameValuePair("Sounds", url));
+					nameValuePairs.add(new BasicNameValuePair("Loop", "false"));
+					nameValuePairs.add(new BasicNameValuePair("Mix", "true"));
 					httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
 					httpclient.execute(httppost);
