@@ -6,11 +6,13 @@ Make sure to have wireless on when testing the application so the phone has acce
 
 The architecture of the application should have three major components
 * Call Server
+
 The call servers purpose is to transfer the call status to the mobile app via push notifications. This allows 
 for a much nicer application with loading screens, ability to prevent user errors before they occur and 
 access to features of the API's POST/GET callbacks.
 
 * Android API wrapper around the TelAPI services. 
+
 The API should mirror the python/ruby API's that currently exist.
 The api should also provide a handler subclass to deal with callbacks from the Call Server. or errors
 when calling.
@@ -21,6 +23,7 @@ examples:
 	Call Server not responding
 
 * Android App
+
 Uses the Android API to connect to the TelAPI services and receives updates from the call server.
 
 Comments:

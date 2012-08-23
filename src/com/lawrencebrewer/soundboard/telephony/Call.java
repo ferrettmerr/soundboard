@@ -55,7 +55,7 @@ public class Call {
 			public void run() {
 				try {
 					DefaultHttpClient httpclient = new DefaultHttpClient();
-					HttpPost httppost = new HttpPost("https://api.telapi.com/2011-07-01/Accounts/" + authSID +"/Calls.json");
+					HttpPost httppost = new HttpPost("https://api.telapi.com/2011-07-01/" + "Accounts/" + authSID +"/Calls.json");
 
 					UsernamePasswordCredentials creds = new UsernamePasswordCredentials(authSID, authToken);
 					httppost.addHeader(new BasicScheme().authenticate(creds, httppost));
@@ -63,7 +63,8 @@ public class Call {
 					List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(3);
 					nameValuePairs.add(new BasicNameValuePair("From", fromNumber));
 					nameValuePairs.add(new BasicNameValuePair("To", toNumber));		
-					nameValuePairs.add(new BasicNameValuePair("Url", "http://lawrencebrewer.com/response.xml"));
+					nameValuePairs.add(new BasicNameValuePair("Url", "http://lawrencebrewer.com/response.php"));
+					nameValuePairs.add(new BasicNameValuePair("Method", "GET"));		
 					httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
 					HttpResponse response = httpclient.execute(httppost);
@@ -102,7 +103,7 @@ public class Call {
 			public void run() {
 				try {
 					DefaultHttpClient httpclient = new DefaultHttpClient();
-					HttpPost httppost = new HttpPost("https://api.telapi.com/2011-07-01/Accounts/" + authSID +"/Calls/" + callSID);
+					HttpPost httppost = new HttpPost("https://api.telapi.com/2011-07-01/" + "Accounts/" + authSID +"/Calls/" + callSID);
 
 					UsernamePasswordCredentials creds = new UsernamePasswordCredentials(authSID, authToken);
 					httppost.addHeader(new BasicScheme().authenticate(creds, httppost));
@@ -130,7 +131,7 @@ public class Call {
 			public void run() {
 				try {
 					DefaultHttpClient httpclient = new DefaultHttpClient();
-					HttpPost httppost = new HttpPost("https://api.telapi.com/2011-07-01/Accounts/" + authSID +"/Calls/" + callSID + "/Play");
+					HttpPost httppost = new HttpPost("https://api.telapi.com/2011-07-01/"+"Accounts/" + authSID +"/Calls/" + callSID + "/Play");
 
 					UsernamePasswordCredentials creds = new UsernamePasswordCredentials(authSID, authToken);
 					httppost.addHeader(new BasicScheme().authenticate(creds, httppost));
